@@ -1,0 +1,33 @@
+name: FroobProtect
+main: com.froobworld.froobprotect.FroobProtect
+author: froobynooby
+api-version: 1.13
+version: 4.1.0
+description: >
+             Land, chest and horse protection.
+softdepend: [FroobBasics, FroobPermissions]
+commands:
+  area:
+    description: Manage an area.
+  set:
+    description: Create an area.
+  position1:
+    description: Set position one.
+    aliases: [pos1, p1]
+  position2:
+    description: Set position two.
+    aliases: [pos2, p2]
+  areas:
+    description: Get a list of areas.
+  remove:
+    description: Remove an area.
+  requestarea:
+    description: Request an area.
+  redefine:
+    description: Redefine an area's bounds.
+  horse:
+    description: Manage a horse protection.
+  lock:
+    description: Edit a private sign.
+  myareas:
+    description: Get a list of areas you own.
