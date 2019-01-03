@@ -149,7 +149,7 @@ public class NoInteractFlag implements Flag {
         if (player == null) {
             return;
         }
-        if (event.getEntity() instanceof Monster || event.getEntity() instanceof Player) {
+        if ((event.getEntity() instanceof Monster && event.getEntity().getCustomName() == null) || event.getEntity() instanceof Player) {
             return;
         }
         if (!area.getUsers().stream().anyMatch(u -> u.isUser(player, fpPlayerManager, fbPlayerManager)) && !area.getManagers().stream().anyMatch(u -> u.isUser(player, fpPlayerManager, fbPlayerManager)) && !area.getOwners().stream().anyMatch(u -> u.isUser(player, fpPlayerManager, fbPlayerManager))) {
@@ -172,7 +172,7 @@ public class NoInteractFlag implements Flag {
         if (player == null) {
             return;
         }
-        if (event.getEntity() instanceof Monster || event.getEntity() instanceof Player) {
+        if ((event.getEntity() instanceof Monster && event.getEntity().getCustomName() == null) || event.getEntity() instanceof Player) {
             return;
         }
         if (!area.getUsers().stream().anyMatch(u -> u.isUser(player, fpPlayerManager, fbPlayerManager)) && !area.getManagers().stream().anyMatch(u -> u.isUser(player, fpPlayerManager, fbPlayerManager)) && !area.getOwners().stream().anyMatch(u -> u.isUser(player, fpPlayerManager, fbPlayerManager))) {
