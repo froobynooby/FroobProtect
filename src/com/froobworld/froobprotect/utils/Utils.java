@@ -159,20 +159,20 @@ public class Utils {
         String str = uuid.toString();
         String concat = "";
         for (char c : str.toCharArray()) {
-            concat += "�" + getEncoding(c);
+            concat += "§" + getEncoding(c);
         }
 
         return concat;
     }
 
     public static UUID decodeUUID(String line) {
-        String[] split = line.split("�=");
+        String[] split = line.split("§=");
 
         if (split.length < 2) {
             return null;
         }
         String decoded = "";
-        for (String s : split[1].replaceFirst("�", "").split("�")) {
+        for (String s : split[1].replaceFirst("§", "").split("§")) {
             decoded += getDecoded(s);
         }
 
@@ -180,14 +180,14 @@ public class Utils {
     }
 
     public static String decodeName(String line) {
-        String[] split = line.split("�=");
+        String[] split = line.split("§=");
 
         return split[0];
     }
 
     public static String encodeName(String name, UUID uuid) {
 
-        return name + "�=" + encodeUUID(uuid);
+        return name + "§=" + encodeUUID(uuid);
     }
 
     private static char getEncoding(char c) {
