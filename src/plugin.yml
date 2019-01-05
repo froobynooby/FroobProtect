@@ -2,7 +2,7 @@ name: FroobProtect
 main: com.froobworld.froobprotect.FroobProtect
 author: froobynooby
 api-version: 1.13
-version: 4.1.0
+version: 4.1.1
 description: >
              Land, chest and horse protection.
 softdepend: [FroobBasics, FroobPermissions]
