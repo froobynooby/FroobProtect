@@ -70,11 +70,23 @@ public class LockManager extends Manager {
     }
 
     public boolean isUser(Location location, Player player) {
+        ArrayList<Sign> relevantSigns = getAllRelevantSigns(location.getBlock());
+        for (Sign sign : relevantSigns) {
+            if (sign.getLine(0).equalsIgnoreCase(LOCK_HEADER) || sign.getLine(0).equalsIgnoreCase(MORE_HEADER)) {
+                for (int i = 1; i <= 3; i++) {
+                    if (sign.getLine(i).contains("�")) {
+                        sign.setLine(i, sign.getLine(i).replaceAll("�", "§"));
+                        sign.update(true);
+                    }
+                }
+            }
+        }
+
         UUID owner = getOwner(location, false);
         if (owner == null) {
             return true;
         }
-        for (Sign sign : getAllRelevantSigns(location.getBlock())) {
+        for (Sign sign : relevantSigns) {
             if (sign.getLine(0).equalsIgnoreCase(LOCK_HEADER) || sign.getLine(0).equalsIgnoreCase(MORE_HEADER)) {
                 for (int i = 1; i <= 3; i++) {
                     if (sign.getLine(i).equalsIgnoreCase(EVERYONE)) {
@@ -90,11 +102,13 @@ public class LockManager extends Manager {
                     if (player.getUniqueId().equals(uuid)) {
                         if (name != player.getName()) {
                             sign.setLine(i, Utils.encodeName(player.getName(), player.getUniqueId()));
+                            sign.update();
                         }
                         return true;
                     }
                     if (uuid == null && name.equalsIgnoreCase(player.getName())) {
                         sign.setLine(i, Utils.encodeName(player.getName(), player.getUniqueId()));
+                        sign.update();
                         return true;
                     }
                 }
